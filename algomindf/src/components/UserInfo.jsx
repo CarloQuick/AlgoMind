@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import SignInBtn from "./SignInBtn";
+import AddBtn from "./SignInBtn";
 import { useSession } from "next-auth/react";
 
 export default function Userinfo() {
@@ -20,6 +21,11 @@ export default function Userinfo() {
         <div>
           <span className="font-bold">{session?.user?.email}</span>
         </div>
+        <div>
+          Total Points:
+          <span className="font-bold">{session?.user?.points}</span>
+        </div>
+        <AddBtn />
       </div>
     );
   } else {

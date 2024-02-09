@@ -13,7 +13,7 @@ const authOptions = {
   callbacks: {
     async signIn({ user, account }) {
       if (account.provider === "google") {
-        const { name, email } = user;
+        const { name, email, points } = user;
         try {
           await connectMongoDB();
           const userExists = await User.findOne({ email });
@@ -26,6 +26,7 @@ const authOptions = {
               body: JSON.stringify({
                 name,
                 email,
+                points,
               }),
             });
             if (res.ok) {
